@@ -7,7 +7,7 @@ import java.sql.SQLException;
 
 //Início da classe de conexão//
 public class ConexaoMySQL {
-
+//s
         public static String status = "Não conectou...";
 //Método Construtor da Classe//
         public ConexaoMySQL() {
