@@ -9,15 +9,20 @@ package ModeloBeans;
  *
  * @author Ezequiel
  */
+import java.sql.Date;
+import javax.xml.soap.Text;
+import sun.util.calendar.BaseCalendar;
+
 public class BeansAutor {
      private int id;
      private String nome;
      private String sobrenome;
-     private String dtnasc;
-     private String dtmort;
+             Date dataNascimento;
+             Date dataFalecimento;
      private String locnasc;
      private String locmort;
      private String pesquisa;
+             Text bibliografia;
 
     /**
      * @return the nome
@@ -47,33 +52,7 @@ public class BeansAutor {
         this.sobrenome = sobrenome;
     }
 
-    /**
-     * @return the dtnasc
-     */
-    public String getDtnasc() {
-        return dtnasc;
-    }
-
-    /**
-     * @param dtnasc the dtnasc to set
-     */
-    public void setDtnasc(String dtnasc) {
-        this.dtnasc = dtnasc;
-    }
-
-    /**
-     * @return the dtmort
-     */
-    public String getDtmort() {
-        return dtmort;
-    }
-
-    /**
-     * @param dtmort the dtmort to set
-     */
-    public void setDtmort(String dtmort) {
-        this.dtmort = dtmort;
-    }
+  
 
     /**
      * @return the locnasc

@@ -23,7 +23,7 @@ public class DaoAutor {
     BeansAutor mod = new BeansAutor();
     
     public void Salvar(BeansAutor mod){
-      conex.conexao();
+      /*conex.conexao();
       
         PreparedStatement pst;
         try {
@@ -32,8 +32,7 @@ public class DaoAutor {
         
         pst.setString(1,mod.getNome());
         pst.setString(2,mod.getSobrenome());
-        pst.setString(3,mod.getDtnasc());
-        pst.setString(4,mod.getDtmort());
+     
         pst.setString(5,mod.getLocnasc());
         pst.setString(5,mod.getLocmort());
         pst.execute();
@@ -42,7 +41,7 @@ public class DaoAutor {
             JOptionPane.showMessageDialog(null,"Dados nao inseridos, ou inseridos incorretos"+ ex);
       
     }
-    conex.desconecta();
+    conex.desconecta();*/
 }
     
     public void Excluir(BeansAutor mod){
@@ -66,8 +65,7 @@ public class DaoAutor {
             PreparedStatement pst = conex.con.prepareStatement("update Autor set nome=?, sobrenome=?, data_nascimento=?, data_morte=?, local_nascimento=?, local_morte=?");
             pst.setString(1, mod.getNome());
             pst.setString(2, mod.getSobrenome());
-            pst.setString(3, mod.getDtnasc());
-            pst.setString(4, mod.getDtmort());
+           
             pst.setString(5, mod.getLocnasc());
             pst.setString(6, mod.getLocmort());
             pst.execute();
