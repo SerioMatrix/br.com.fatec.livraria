@@ -9,6 +9,7 @@ import ModeloBeans.BeansAutor;
 import ModeloConexao.ConexaoBD;
 import ModeloDao.DaoAutor;
 import java.awt.Color;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -63,7 +64,6 @@ getContentPane().setBackground(new Color(00,18,30));
         txt_localnas = new javax.swing.JTextField();
         txt_datamort = new javax.swing.JFormattedTextField();
         txt_localmort = new javax.swing.JTextField();
-        txt_id_autor = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
@@ -103,8 +103,13 @@ getContentPane().setBackground(new Color(00,18,30));
         btn_pesquisar_autor.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         btn_pesquisar_autor.setForeground(new java.awt.Color(255, 255, 255));
         btn_pesquisar_autor.setText("Pesquisar");
+        btn_pesquisar_autor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_pesquisar_autorActionPerformed(evt);
+            }
+        });
         getContentPane().add(btn_pesquisar_autor);
-        btn_pesquisar_autor.setBounds(190, 130, 100, 30);
+        btn_pesquisar_autor.setBounds(480, 340, 100, 30);
 
         btn_excluir_autor.setBackground(new java.awt.Color(247, 147, 29));
         btn_excluir_autor.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
@@ -164,8 +169,6 @@ getContentPane().setBackground(new Color(00,18,30));
         txt_datamort.setBounds(170, 260, 85, 30);
         getContentPane().add(txt_localmort);
         txt_localmort.setBounds(390, 260, 150, 30);
-        getContentPane().add(txt_id_autor);
-        txt_id_autor.setBounds(120, 130, 55, 30);
         getContentPane().add(jLabel8);
         jLabel8.setBounds(191, 1528, 0, 0);
 
@@ -192,7 +195,7 @@ getContentPane().setBackground(new Color(00,18,30));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_salvar_autorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_salvar_autorActionPerformed
-        mod.setId(Integer.parseInt(txt_id_autor.getText()));
+        
         mod.setNome(txt_nome_autor.getText());
         mod.setSobrenome(txt_sobrenome_autor.getText());
         mod.setDtnasc(txt_datanasc.getText());
@@ -202,6 +205,10 @@ getContentPane().setBackground(new Color(00,18,30));
         control.Salvar(mod);       
         
     }//GEN-LAST:event_btn_salvar_autorActionPerformed
+
+    private void btn_pesquisar_autorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_pesquisar_autorActionPerformed
+       JOptionPane.showMessageDialog(null,"HIII");
+    }//GEN-LAST:event_btn_pesquisar_autorActionPerformed
 
     /**
      * @param args the command line arguments
@@ -257,7 +264,6 @@ getContentPane().setBackground(new Color(00,18,30));
     private javax.swing.JLabel jLabel9;
     private javax.swing.JFormattedTextField txt_datamort;
     private javax.swing.JFormattedTextField txt_datanasc;
-    private javax.swing.JTextField txt_id_autor;
     private javax.swing.JTextField txt_localmort;
     private javax.swing.JTextField txt_localnas;
     private javax.swing.JTextField txt_nome_autor;
