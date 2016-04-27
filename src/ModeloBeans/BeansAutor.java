@@ -17,12 +17,13 @@ public class BeansAutor {
      private int id;
      private String nome;
      private String sobrenome;
-             Date dataNascimento;
-             Date dataFalecimento;
+     private Date dataNascimento;
+    private Date dataFalecimento;
      private String locnasc;
      private String locmort;
      private String pesquisa;
-             Text bibliografia;
+    private Text bibliografia;
+    private String bibli;
 
     /**
      * @return the nome
@@ -108,6 +109,62 @@ public class BeansAutor {
      */
     public void setId(int id) {
         this.id = id;
+    }
+
+    /**
+     * @return the dataNascimento
+     */
+    public Date getDataNascimento() {
+        return dataNascimento;
+    }
+
+    /**
+     * @param dataNascimento the dataNascimento to set
+     */
+    public void setDataNascimento(Date dataNascimento) {
+        this.dataNascimento = dataNascimento;
+    }
+
+    /**
+     * @return the dataFalecimento
+     */
+    public Date getDataFalecimento() {
+        return dataFalecimento;
+    }
+
+    /**
+     * @param dataFalecimento the dataFalecimento to set
+     */
+    public void setDataFalecimento(Date dataFalecimento) {
+        this.dataFalecimento = dataFalecimento;
+    }
+
+    /**
+     * @return the bibliografia
+     */
+    public Text getBibliografia() {
+        return bibliografia;
+    }
+
+    /**
+     * @param bibliografia the bibliografia to set
+     */
+    public void setBibliografia(Text bibliografia) {
+        this.bibliografia = bibliografia;
+    }
+
+    /**
+     * @return the bibli
+     */
+    public String getBibli() {
+        return bibli;
+    }
+
+    /**
+     * @param bibli the bibli to set
+     */
+    public void setBibli(String bibli) {
+        this.bibli = bibli;
     }
      
 }

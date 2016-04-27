@@ -238,9 +238,21 @@ getContentPane().setBackground(new Color(00,18,30));
     }//GEN-LAST:event_btn_salvar_autorActionPerformed
 
     private void btn_pesquisar_autorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_pesquisar_autorActionPerformed
-       JOptionPane.showMessageDialog(null,"HIII");
-         JOptionPane.showMessageDialog(null,"SIM SIM 2");
-        System.out.println("Apenas um teste");
+      mod.setPesquisa(txt_nome_autor.getText());//set dentro de pesquia oque usuario difitou
+     BeansAutor model = control.buscaAutor(mod);
+     //chama metodo e envia o modelo chamando por paramentro o que usuario digitou
+     //faz pesquisa rece e fica salvo dentro de model o txt_nome vai ser setado dentro dele uma string que foi encontrado no banco
+     txt_sobrenome_autor.setText(model.getSobrenome());
+    
+     
+    // txt_datanasc.setText(model.getDtnasc());
+     //txt_datamort.setText(model.getDtmort());
+     dataNascimento.setDate(model.getDataNascimento());
+     dataFalecimento.setDate(model.getDataFalecimento());
+     txt_localmort.setText(model.getLocmort());
+     txt_localnas.setText(model.getLocnasc());
+     //txt_bibliografia.setText(toString())model.getBibliografia()));
+        
     }//GEN-LAST:event_btn_pesquisar_autorActionPerformed
 
     /**

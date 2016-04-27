@@ -79,8 +79,34 @@ public class DaoAutor {
     
     public BeansAutor buscaAutor(BeansAutor mod){
           conex.conexao();
-        conex.ExecutaSql("select * from biblioteca where id_Autor like '%"+mod.getPesquisa()+"%'");
+        conex.ExecutaSql("select *from autor where nomeAutor like '%"+mod.getPesquisa()+"%'"); //string sql por onde faz a pesquisa
+        System.out.println("Entrou 1");
+        try {
+            conex.rs.first();
+            System.out.println("Entrou 2");
+           
+          
+           mod.setSobrenome(conex.rs.getString("sobrenomeAutor"));
+          // mod.setDtnasc(conex.rs.getString("data_nasc"));
+          mod.setDataNascimento(conex.rs.getDate("dataNascimento"));
+          mod.setDataFalecimento(conex.rs.getDate("dataFalecimento"));
+          // mod.setDtmort(conex.rs.getString("data_mort"));
+          mod.setLocmort(conex.rs.getString("localFalecimento"));
+         mod.setLocnasc(conex.rs.getString("localNascimento"));
+         
+        // mod.setBibliografia(conex.rs.getText("asdasd"));
         
+        // mod.setBibliografia(null);
+         
+           
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(DaoAutor.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
+    
         return mod;
+        
     }
 }
