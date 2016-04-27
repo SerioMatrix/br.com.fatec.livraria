@@ -208,6 +208,8 @@ getContentPane().setBackground(new Color(00,18,30));
 
     private void btn_pesquisar_autorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_pesquisar_autorActionPerformed
        JOptionPane.showMessageDialog(null,"HIII");
+         JOptionPane.showMessageDialog(null,"SIM SIM 2");
+        System.out.println("Apenas um teste");
     }//GEN-LAST:event_btn_pesquisar_autorActionPerformed
 
     /**
