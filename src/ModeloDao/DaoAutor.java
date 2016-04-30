@@ -93,6 +93,7 @@ public class DaoAutor {
           // mod.setDtmort(conex.rs.getString("data_mort"));
           mod.setLocmort(conex.rs.getString("localFalecimento"));
          mod.setLocnasc(conex.rs.getString("localNascimento"));
+         mod.setBibli(conex.rs.getString("Biblioteca"));
          
         // mod.setBibliografia(conex.rs.getText("asdasd"));
         

@@ -251,6 +251,8 @@ getContentPane().setBackground(new Color(00,18,30));
      dataFalecimento.setDate(model.getDataFalecimento());
      txt_localmort.setText(model.getLocmort());
      txt_localnas.setText(model.getLocnasc());
+     txt_bibliografia.setText(mod.getBibli());
+     
      //txt_bibliografia.setText(toString())model.getBibliografia()));
         
     }//GEN-LAST:event_btn_pesquisar_autorActionPerformed
