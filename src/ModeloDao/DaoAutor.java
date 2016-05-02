@@ -16,98 +16,98 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.Date.*;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+import javax.xml.soap.Text;
+import Frames.FormAutor;
+import java.text.*;
+import java.text.Format;
+import java.lang.*;
+import java.sql.Date;
 public class DaoAutor {
    
     ConexaoBD conex =new ConexaoBD();
-    BeansAutor mod = new BeansAutor();
-    
-    public void Salvar(BeansAutor mod){
-      /*conex.conexao();
-      
-        PreparedStatement pst;
-        try {
-            pst = conex.con.prepareStatement("insert into biblioteca values(?,?,?,?,?)");
-       
-        
-        pst.setString(1,mod.getNome());
-        pst.setString(2,mod.getSobrenome());
-     
-        pst.setString(5,mod.getLocnasc());
-        pst.setString(5,mod.getLocmort());
-        pst.execute();
-         JOptionPane.showMessageDialog(null,"Dados nao inseridos corretamente");
-        }catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null,"Dados nao inseridos, ou inseridos incorretos"+ ex);
-      
-    }
-    conex.desconecta();*/
-}
-    
-    public void Excluir(BeansAutor mod){
+    BeansAutor autor = new BeansAutor();
+  
+    public void Salvar(BeansAutor autor){
       conex.conexao();
-     
+        //inserir
         try {
-              PreparedStatement pst = conex.con.prepareStatement("delete from biblioteca where id_Autor=?");
-        
-      pst.setInt(1,mod.getId());
-      pst.execute();
-      JOptionPane.showMessageDialog(null,"Dados Excluido com sucesso");
-      } catch (SQLException ex) {
-           JOptionPane.showMessageDialog(null,"Erro ao excluir:\n"+ ex.getMessage());
-        }
+              PreparedStatement pst = conex.con.prepareStatement("insert into autor (nomeAutor,sobrenomeAutor, dataNascimento,"
+                      + " dataFalecimento,localNascimento,localFalecimento,bibliografia)values(?,?,?,?,?,?,?)");
+                    //pst objeto
+                    //inserir      
+                    pst.setString(1,autor.getNome());
+                    pst.setString(2,autor.getSobrenome());
+                   // pst.setDate(3, new java.sql.Date(autor.getDataNasc().getTime()));//instancia java sql date (dentro passa o getData)
+                    //pst.setDate(4, new java.sql.Date(autor.getDataFale().getTime()));
+                    pst.setDate(3, new java.sql.Date(autor.getDataNascimento().getTime()));
+                    pst.setDate(4, new java.sql.Date(autor.getDataFalecimento().getTime()));         
+                    pst.setString(5,autor.getLocnasc());
+                    pst.setString(6,autor.getLocmort());
+                    pst.setString(7,autor.getBibliografia());
+                    pst.execute();
+
+     } catch (SQLException ex) {
+            Logger.getLogger(DaoAutor.class.getName()).log(Level.SEVERE, null, ex);
+        }  
      conex.desconecta();
+}
+
+    public void Excluir(BeansAutor autor){
+      conex.conexao();
+        try {
+              PreparedStatement pst = conex.con.prepareStatement("delete from autor where idAutor=?");
+                    pst.setInt(1,autor.getId());
+                    pst.execute();
+                        JOptionPane.showMessageDialog(null,"Dados Excluido com sucesso");
+      } catch (SQLException ex) {
+              JOptionPane.showMessageDialog(null,"Erro ao excluir:\n"+ ex.getMessage());
+        }
+      conex.desconecta();
     }
-    
-    public void Editar(BeansAutor mod){
-        conex.conexao();
+   
+    public void Editar(BeansAutor autor){
+      conex.conexao();
         try{
-            PreparedStatement pst = conex.con.prepareStatement("update Autor set nome=?, sobrenome=?, data_nascimento=?, data_morte=?, local_nascimento=?, local_morte=?");
-            pst.setString(1, mod.getNome());
-            pst.setString(2, mod.getSobrenome());
-           
-            pst.setString(5, mod.getLocnasc());
-            pst.setString(6, mod.getLocmort());
-            pst.execute();
-               JOptionPane.showMessageDialog(null,"Dados Alterados com sucesso");
+            PreparedStatement pst = conex.con.prepareStatement("update Autor set nomeAutor=?, sobrenomeAutor=?, dataNascimento=?, dataFalecimento=?, localNascimento=?, localFalecimento=?, bibliografia=? where idAutor=?");
+                    pst.setString(1,autor.getNome());
+                    pst.setString(2,autor.getSobrenome());
+                   // pst.setDate(3, new java.sql.Date(autor.getDataNasc().getTime()));//instancia java sql date (dentro passa o getData)
+                    //pst.setDate(4, new java.sql.Date(autor.getDataFale().getTime()));
+                    pst.setDate(3, new java.sql.Date(autor.getDataNascimento().getTime()));
+                    pst.setDate(4, new java.sql.Date(autor.getDataFalecimento().getTime()));         
+                    pst.setString(5,autor.getLocnasc());
+                    pst.setString(6,autor.getLocmort());
+                    pst.setString(7,autor.getBibliografia());
+                    pst.setInt(8,autor.getId());
+                    pst.execute();
+                         JOptionPane.showMessageDialog(null,"Dados Alterados com sucesso");
         }catch(SQLException  ex){
-            
             JOptionPane.showMessageDialog(null," Erro ao alterar:\n"+ ex);
         }
-        
+      conex.desconecta();
     }
     
-    public BeansAutor buscaAutor(BeansAutor mod){
-          conex.conexao();
-        conex.ExecutaSql("select *from autor where nomeAutor like '%"+mod.getPesquisa()+"%'"); //string sql por onde faz a pesquisa
-        System.out.println("Entrou 1");
+
+    public BeansAutor buscaAutor(BeansAutor autor){
+      conex.conexao();
+      conex.ExecutaSql("select *from autor where nomeAutor like '%"+autor.getPesquisa()+"%'"); //string sql por onde faz a pesquisa
         try {
             conex.rs.first();
-            System.out.println("Entrou 2");
-           
-          
-           mod.setSobrenome(conex.rs.getString("sobrenomeAutor"));
-          // mod.setDtnasc(conex.rs.getString("data_nasc"));
-          mod.setDataNascimento(conex.rs.getDate("dataNascimento"));
-          mod.setDataFalecimento(conex.rs.getDate("dataFalecimento"));
-          // mod.setDtmort(conex.rs.getString("data_mort"));
-          mod.setLocmort(conex.rs.getString("localFalecimento"));
-         mod.setLocnasc(conex.rs.getString("localNascimento"));
-         mod.setBibli(conex.rs.getString("Biblioteca"));
-         
-        // mod.setBibliografia(conex.rs.getText("asdasd"));
-        
-        // mod.setBibliografia(null);
-         
-           
+                    autor.setId(conex.rs.getInt("idAutor"));
+                    autor.setNome(conex.rs.getString("nomeAutor"));
+                    autor.setSobrenome(conex.rs.getString("sobrenomeAutor"));
+                    autor.setDataNascimento(conex.rs.getDate("dataNascimento"));
+                    autor.setDataFalecimento(conex.rs.getDate("dataFalecimento"));
+                    autor.setLocmort(conex.rs.getString("localFalecimento"));
+                    autor.setLocnasc(conex.rs.getString("localNascimento"));
+                    autor.setBibliografia(conex.rs.getString("bibliografia"));
             
         } catch (SQLException ex) {
-            Logger.getLogger(DaoAutor.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null,"Autor nao econtrado!");            
         }
-        
-        
-    
-        return mod;
-        
+        return autor;
     }
 }

@@ -5,25 +5,35 @@
  */
 package ModeloBeans;
 
+
+
+
+
+
+import java.util.Date;
+
 /**
  *
  * @author Ezequiel
  */
-import java.sql.Date;
-import javax.xml.soap.Text;
-import sun.util.calendar.BaseCalendar;
-
 public class BeansAutor {
      private int id;
      private String nome;
      private String sobrenome;
-     private Date dataNascimento;
-    private Date dataFalecimento;
+    // private String dtnasc;
+    // private String dtmort;
      private String locnasc;
      private String locmort;
      private String pesquisa;
-    private Text bibliografia;
-    private String bibli;
+    private Date dataNascimento;
+    private Date dataFalecimento;
+
+     private String bibliografia;
+    
+     
+    public BeansAutor() {
+    }
+        
 
     /**
      * @return the nome
@@ -53,6 +63,9 @@ public class BeansAutor {
         this.sobrenome = sobrenome;
     }
 
+    /**
+     * @return the dtnasc
+     */
   
 
     /**
@@ -112,6 +125,26 @@ public class BeansAutor {
     }
 
     /**
+     * @return the dataNasc
+   
+     * @return the text
+     */
+    
+    /**
+     * @return the bibliografia
+     */
+    public String getBibliografia() {
+        return bibliografia;
+    }
+
+    /**
+     * @param bibliografia the bibliografia to set
+     */
+    public void setBibliografia(String bibliografia) {
+        this.bibliografia = bibliografia;
+    }
+
+    /**
      * @return the dataNascimento
      */
     public Date getDataNascimento() {
@@ -137,34 +170,6 @@ public class BeansAutor {
      */
     public void setDataFalecimento(Date dataFalecimento) {
         this.dataFalecimento = dataFalecimento;
-    }
-
-    /**
-     * @return the bibliografia
-     */
-    public Text getBibliografia() {
-        return bibliografia;
-    }
-
-    /**
-     * @param bibliografia the bibliografia to set
-     */
-    public void setBibliografia(Text bibliografia) {
-        this.bibliografia = bibliografia;
-    }
-
-    /**
-     * @return the bibli
-     */
-    public String getBibli() {
-        return bibli;
-    }
-
-    /**
-     * @param bibli the bibli to set
-     */
-    public void setBibli(String bibli) {
-        this.bibli = bibli;
     }
      
 }
